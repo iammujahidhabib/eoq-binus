@@ -6,7 +6,7 @@
         <label for="vert-1"> EOQ </label>
         <div class="content">
           <div class="col-md-7">
-            <img src="<?=base_url()?>public/gambar/big_thumb.jpg" />
+            <img src="<?= base_url() ?>public/gambar/big_thumb.jpg" />
 
           </div>
         </div>
@@ -16,7 +16,7 @@
         <label for="vert-2">Buffer&nbsp; Stock</label>
         <div class="content">
           <div class="col-md-8">
-            <img src="<?=base_url()?>public/gambar/Demand.gif" />
+            <img src="<?= base_url() ?>public/gambar/Demand.gif" />
           </div>
 
 
@@ -27,14 +27,31 @@
         <label for="vert-3">ReOrder&nbsp; Point</label>
         <div class="content">
           <div class="col-md-6">
-            <img src="<?=base_url()?>public/gambar/16fig11.jpg" />
+            <img src="<?= base_url() ?>public/gambar/16fig11.jpg" />
           </div>
 
         </div>
       </li>
-
-  </div>
-  </li>
-  </ul>
+    </ul>
   </div>
   <!--end-->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-counter primary">
+          <i class="fa fa-code-fork"></i>
+          <span class="count-numbers"><?=count($barang)?></span>
+          <span class="count-name">Barang</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-counter info">
+          <i class="fa fa-users"></i>
+          <span class="count-numbers"><?=count($user)?></span>
+          <span class="count-name">Users</span>
+        </div>
+      </div>
+    </div>
+  </div>

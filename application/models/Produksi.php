@@ -23,7 +23,7 @@ class produksi extends CI_Model
 
     public function findPesananById($id)
     {
-        $sqlProduksi = "SELECT * FROM pemesanan WHERE id_pesanan = '$id'";
+        $sql = "SELECT * FROM pemesanan WHERE id_pesanan = '$id'";
         return $this->db->query($sql);
     }
 

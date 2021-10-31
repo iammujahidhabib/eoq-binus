@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class gudang extends CI_Controller
+class stock extends CI_Controller
 {
 
     public function __construct()
@@ -10,6 +10,7 @@ class gudang extends CI_Controller
 
         // $this->load->model('users');
         $this->load->model('templates');
+        $this->load->model('barang');
         // $this->load->helper('date');
         // if ($this->session->userdata('role') == 1) {
         //     redirect('profile');
@@ -24,8 +25,9 @@ class gudang extends CI_Controller
     }
     public function index()
     {
-        $this->load->view('user/template/header');
-        $this->load->view('user/gudang/index');
-        $this->load->view('user/template/footer');
+        $data['DataStok'] = $this->barang->StokBarang()->result_array();
+        $this->load->view('user/template/header', $data);
+        $this->load->view('user/tukang_pesan/stock/index', $data);
+        $this->load->view('user/template/footer', $data);
     }
 }

@@ -22,16 +22,16 @@ class auth extends CI_Controller
                 redirect("admin/admin");
             } elseif ($this->session->id_bagian == 8) {
                 // redirect berdasarkan level user
-                redirect("user/manager/");
+                redirect("manager/manager/");
             } elseif ($this->session->id_bagian == 9) {
                 //redirect berdasarkan level user
-                redirect("user/gudang/");
+                redirect("gudang/gudang/");
             } elseif ($this->session->id_bagian == 11) {
                 // redirect berdasarkan level user
-                redirect("user/produksi/");
+                redirect("produksi/produksi/");
             } elseif ($this->session->id_bagian == 10) {
                 // redirect berdasarkan level user
-                redirect("user/tukang_pesan/");
+                redirect("tukang_pesan/tukang_pesan/");
             }
             /*	elseif($value['id_level'] == 6)
             {
@@ -63,5 +63,10 @@ class auth extends CI_Controller
             }
         }
         // $this->load->view('welcome_message');
+    }
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect("auth");
     }
 }

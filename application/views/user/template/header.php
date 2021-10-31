@@ -16,4 +16,4 @@
 </head>
 
 <body>
-    <?php $this->load->view('admin/template/navbar');?>
+    <?php $this->load->view('user/template/navbar');?>

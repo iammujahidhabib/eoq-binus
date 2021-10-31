@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class pengambilan extends CI_Controller
+class produksi extends CI_Controller
 {
 
     public function __construct()
@@ -10,6 +10,7 @@ class pengambilan extends CI_Controller
 
         // $this->load->model('users');
         $this->load->model('templates');
+        $this->load->model('pemesanan');
         // $this->load->helper('date');
         // if ($this->session->userdata('role') == 1) {
         //     redirect('profile');
@@ -20,25 +21,27 @@ class pengambilan extends CI_Controller
         // $this->load->library('form_validation');
 
         // // $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=';
-
     }
     public function index()
     {
-        $data['DaftarPengambilan'] = $this->templates->join('pengambilan','id_barang','barang')->result_array();
+        $data['DaftarPesanan'] = $this->pemesanan->PesananList()->result_array();
+        $data['byName'] = $this->pemesanan->graphPemesananByName()->result_array();
+        $data['byBarang'] = $this->pemesanan->graphPemesananByBarang()->result_array();
+        // $data['DaftarPesanan'] = $this->templates->join('pemesanan','id_barang','barang')->result_array();
         $this->load->view('user/template/header', $data);
-        $this->load->view('user/gudang/pengambilan/index', $data);
+        $this->load->view('user/produksi/index', $data);
         $this->load->view('user/template/footer', $data);
     }
     public function add()
     {
         if ($this->input->post()) {
-            $this->templates->insert('pengambilan', $this->input->post());
-            redirect('gudang/pengambilan');
+            $this->templates->insert('pesanan', $this->input->post());
+            redirect('user/gudang/pesanan');
         } else {
-            // $data['Daftarpengambilan'] = $this->templates->view('pengambilan')->result_array();
+            // $data['Daftarpesanan'] = $this->templates->view('pesanan')->result_array();
             $data['DaftarBarang'] = $this->templates->view('barang')->result_array();
             $this->load->view('user/template/header');
-            $this->load->view('user/gudang/pengambilan/add', $data);
+            $this->load->view('user/produksi/add', $data);
             $this->load->view('user/template/footer');
         }
     }
@@ -47,24 +50,24 @@ class pengambilan extends CI_Controller
         if (isset($_GET['id'])) {
 
             if ($this->input->post()) {
-                $this->templates->update('pengambilan', ['id_pengambilan' => $this->input->get('id')], $this->input->post());
-                redirect('user/gudang/pengambilan');
+                $this->templates->update('pesanan', ['id_pesanan' => $this->input->get('id')], $this->input->post());
+                redirect('user/gudang/pesanan');
             } else {
-                $data['Pengambilan'] = $this->templates->view_where('pengambilan', ['id_pengambilan' => $this->input->get('id')])->result_array();
+                $data['Pesanan'] = $this->templates->view_where('pesanan', ['id_pesanan' => $this->input->get('id')])->result_array();
                 $this->load->view('user/template/header');
-                $this->load->view('user/gudang/pengambilan/edit', $data);
+                $this->load->view('user/produksi/edit', $data);
                 $this->load->view('user/template/footer');
             }
         } else {
-            redirect('gudang/pengambilan');
+            redirect('user/gudang/pesanan');
         }
     }
     public function delete()
     {
         echo $this->input->get('id');
         if (isset($_GET['id'])) {
-            $query = $this->templates->delete('pengambilan', ['id_pengambilan' => $this->input->get('id')]);
+            $query = $this->templates->delete('pesanan', ['id_pesanan' => $this->input->get('id')]);
         }
-        redirect('gudang/pengambilan');
+        redirect('user/gudang/pesanan');
     }
 }

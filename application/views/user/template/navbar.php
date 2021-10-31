@@ -27,24 +27,24 @@
                 } elseif ($this->session->id_bagian == 8) {
                 ?>
                     <li><a href="<?=site_url('manager/manager/eoq')?>"> EOQ </a></li>
-                    <li><a href="<?=site_url('manager/manager/rop')?>rop.php"> ROP </a></li>
+                    <li><a href="<?=site_url('manager/manager/rop')?>"> ROP </a></li>
                 <?php
                 } elseif ($this->session->id_bagian == 9) {
                 ?>
-                    <li> <a href="stok.php"> Stok Barang </a></li>
-                    <li><a href="pengambilan.php"> Pengambilan </a></li>
+                    <li> <a href="<?=site_url('gudang/stock')?>"> Stok Barang </a></li>
+                    <li><a href="<?=site_url('gudang/pengambilan')?>"> Pengambilan </a></li>
                 <?php
-                    redirect("user/gudang/");
+                    // redirect("gudang/gudang/");
                 } elseif ($this->session->id_bagian == 11) {
                     // redirect berdasarkan level user
-                    redirect("user/produksi/");
+                    // redirect("user/produksi/");
                 } elseif ($this->session->id_bagian == 10) { ?>
                     <li><a href="index.php"> Home </a></li>
                     <li><a href="pesanan.php"> Pesan Barang </a></li>
                     <li><a href="barang_form.php"> Barang Baru</a></li>
                 <?php
                     // redirect berdasarkan level user
-                    redirect("user/tukang_pesan/");
+                    // redirect("user/tukang_pesan/");
                 }
                 /*	elseif($value['id_level'] == 6)
                 {
@@ -58,10 +58,6 @@
                     //header("Location: index.php?sError=".urlencode($sError));
                 }
                 ?>
-                <li><a href="<?= site_url('admin/admin/') ?>"> Home </a></li>
-                <li><a href="<?= site_url('admin/bagian/') ?>"> Bagian </a></li>
-                <li><a href="<?= site_url('admin/barang/') ?>"> Barang </a></li>
-                <li><a href="<?= site_url('admin/pegawai/') ?>"> Pegawai </a></li>
             </ul>
 
             <!-- Navbar Right-->

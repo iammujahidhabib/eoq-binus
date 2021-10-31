@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 28 Okt 2021 pada 18.27
+-- Waktu pembuatan: 29 Okt 2021 pada 16.11
 -- Versi server: 5.7.32
 -- Versi PHP: 7.4.12
 
@@ -33,7 +33,7 @@ INSERT INTO `bagian` (`id_bagian`, `nama_bagian`) VALUES
 (7, 'administrator'),
 (12, 'gudang'),
 (8, 'manajer'),
-(13, 'tist');
+(9, 'pesan ke supplier');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,9 @@ INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga_barang`, `biaya_penyimp
 (144, 'Kertas HVS Ex Tjiwi Kimia 65 x 100 4', '38200', '3000', '30', 'rim', '500'),
 (145, 'Kertas HVS Ex Tjiwi Kimia 79 x 109', '41000', '4100', '30', 'rim', '500'),
 (146, 'Tinta Cetak Offset ', '12000', '1200', '30', 'kaleng', '1'),
-(147, 'Laser Film A4', '15500', '2000', '30', 'lembar', '1');
+(147, 'Laser Film A4', '15500', '2000', '30', 'lembar', '1'),
+(148, 'Laser Film F4', '18500', '2000', '30', 'lembar', '1'),
+(149, 'Laser Film A3', '27500', '3000', '30', 'lembar', '1');
 
 -- --------------------------------------------------------
 
@@ -89,6 +91,7 @@ CREATE TABLE `pegawai` (
 
 INSERT INTO `pegawai` (`id_pegawai`, `username`, `password`, `nama_pegawai`, `alamat_pegawai`, `hp_pegawai`, `id_bagian`) VALUES
 (7, 'admin', 'admin', 'administrator', 'kantor', '085214021108', 1),
+(9, 'satria', 'admin', 'satria', 'semarang', '085214021108', 7),
 (10, 'amir', 'amir', 'amir', 'semarang', '08080808', 8),
 (11, 'anin', 'anin', 'anin', 'semarang', '004859', 10),
 (14, 'sandi', 'sandi', 'sandi', 'semarang', '009', 9),
@@ -246,19 +249,19 @@ ALTER TABLE `pengambilan`
 -- AUTO_INCREMENT untuk tabel `bagian`
 --
 ALTER TABLE `bagian`
-  MODIFY `id_bagian` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_bagian` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id_barang` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pegawai` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`

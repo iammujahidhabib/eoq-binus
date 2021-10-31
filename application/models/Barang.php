@@ -3,9 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class barang extends CI_Model
 {
-    public function StokBarang()
-    {
-        $sql = "SELECT
+	public function StokBarang()
+	{
+		$sql = "SELECT
 						barang.nama_barang,	
 						SUM(DISTINCT produksi.jumlah_produksi) as total_produksi,
 						SUM(DISTINCT pengambilan.jumlah_pengambilan) as total_pengambilan,
@@ -18,12 +18,12 @@ class barang extends CI_Model
 					JOIN produksi USING (id_barang)
 					JOIN pengambilan USING (id_barang)
 					GROUP BY nama_barang";
-        // return $data;
-        return $this->db->query($sql);
-    }
-    /*		public function BE ()
-		{
-			$sqlBE = mysql_query ("SELECT
+		// return $data;
+		return $this->db->query($sql);
+	}
+	public function BE()
+	{
+		$sql = "SELECT
 					barang.nama_barang,
 					ROUND(STDDEV(jumlah_pesanan), 3) AS s_order,
 					ROUND(
@@ -83,17 +83,17 @@ class barang extends CI_Model
 				INNER JOIN pemesanan ON pemesanan.id_barang = barang.id_barang
 				INNER JOIN produksi ON produksi.id_barang = pemesanan.id_barang
 				GROUP BY
-					nama_barang");
-			while ($row = mysql_fetch_array ($sqlBE))
-			{
-				$data [] = $row;
-			}
-			return $data;
-		}
-*/
-    public function EOQ()
-    {
-        $sql = "SELECT
+					nama_barang";
+		// while ($row = mysql_fetch_array($sqlBE)) {
+		// 	$data[] = $row;
+		// }
+		return $this->db->query($sql);
+		// return $data;
+	}
+
+	public function EOQ()
+	{
+		$sql = "SELECT
 							barang.nama_barang,
 							barang.harga_barang,
 							barang.konversi,
@@ -162,11 +162,11 @@ class barang extends CI_Model
 						INNER JOIN pemesanan ON pemesanan.id_barang = barang.id_barang
 						GROUP BY
 							barang.nama_barang";
-        return $this->db->query($sql);
-    }
-    public function ROP()
-    {
-        $sql = "SELECT
+		return $this->db->query($sql);
+	}
+	public function ROP()
+	{
+		$sql = "SELECT
 						barang.nama_barang,
 						barang.harga_barang,
 						barang.satuan,
@@ -268,6 +268,6 @@ class barang extends CI_Model
 					GROUP BY
 						nama_barang
 								";
-        return $this->db->query($sql);
-    }
+		return $this->db->query($sql);
+	}
 }

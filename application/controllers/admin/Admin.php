@@ -24,8 +24,10 @@ class admin extends CI_Controller
     }
     public function index()
     {
+        $data['user'] = $this->templates->view('pegawai')->result();
+        $data['barang'] = $this->templates->view('barang')->result();
         $this->load->view('admin/template/header');
-        $this->load->view('admin/index');
+        $this->load->view('admin/index',$data);
         $this->load->view('admin/template/footer');
     }
 }

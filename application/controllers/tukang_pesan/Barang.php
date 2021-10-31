@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class pengambilan extends CI_Controller
+class barang extends CI_Controller
 {
 
     public function __construct()
@@ -24,21 +24,19 @@ class pengambilan extends CI_Controller
     }
     public function index()
     {
-        $data['DaftarPengambilan'] = $this->templates->join('pengambilan','id_barang','barang')->result_array();
+        $data['DaftarBarang'] = $this->templates->view('barang')->result_array();
         $this->load->view('user/template/header', $data);
-        $this->load->view('user/gudang/pengambilan/index', $data);
+        $this->load->view('user/tukang_pesan/barang/index', $data);
         $this->load->view('user/template/footer', $data);
     }
     public function add()
     {
         if ($this->input->post()) {
-            $this->templates->insert('pengambilan', $this->input->post());
-            redirect('gudang/pengambilan');
+            $this->templates->insert('barang', $this->input->post());
+            redirect('tukang_pesan/barang');
         } else {
-            // $data['Daftarpengambilan'] = $this->templates->view('pengambilan')->result_array();
-            $data['DaftarBarang'] = $this->templates->view('barang')->result_array();
             $this->load->view('user/template/header');
-            $this->load->view('user/gudang/pengambilan/add', $data);
+            $this->load->view('user/tukang_pesan/barang/add');
             $this->load->view('user/template/footer');
         }
     }
@@ -47,24 +45,23 @@ class pengambilan extends CI_Controller
         if (isset($_GET['id'])) {
 
             if ($this->input->post()) {
-                $this->templates->update('pengambilan', ['id_pengambilan' => $this->input->get('id')], $this->input->post());
-                redirect('user/gudang/pengambilan');
+                $this->templates->update('barang', ['id_barang' => $this->input->get('id')], $this->input->post());
+                redirect('tukang_pesan/barang');
             } else {
-                $data['Pengambilan'] = $this->templates->view_where('pengambilan', ['id_pengambilan' => $this->input->get('id')])->result_array();
+                $data['Barang'] = $this->templates->view_where('barang', ['id_barang' => $this->input->get('id')])->result_array();
                 $this->load->view('user/template/header');
-                $this->load->view('user/gudang/pengambilan/edit', $data);
+                $this->load->view('user/tukang_pesan/barang/edit', $data);
                 $this->load->view('user/template/footer');
             }
         } else {
-            redirect('gudang/pengambilan');
+            redirect('tukang_pesan/barang');
         }
     }
     public function delete()
     {
-        echo $this->input->get('id');
         if (isset($_GET['id'])) {
-            $query = $this->templates->delete('pengambilan', ['id_pengambilan' => $this->input->get('id')]);
+            $query = $this->templates->delete('barang', ['id_barang' => $this->input->get('id')]);
         }
-        redirect('gudang/pengambilan');
+        redirect('tukang_pesan/barang');
     }
 }

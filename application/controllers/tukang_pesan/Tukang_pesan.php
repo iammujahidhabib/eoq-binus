@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class gudang extends CI_Controller
+class tukang_pesan extends CI_Controller
 {
 
     public function __construct()
@@ -25,7 +25,7 @@ class gudang extends CI_Controller
     public function index()
     {
         $this->load->view('user/template/header');
-        $this->load->view('user/gudang/index');
+        $this->load->view('user/tukang_pesan/index');
         $this->load->view('user/template/footer');
     }
 }

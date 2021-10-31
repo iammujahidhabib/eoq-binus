@@ -10,6 +10,7 @@ class stock extends CI_Controller
 
         // $this->load->model('users');
         $this->load->model('templates');
+        $this->load->model('barang');
         // $this->load->helper('date');
         // if ($this->session->userdata('role') == 1) {
         //     redirect('profile');
@@ -24,7 +25,7 @@ class stock extends CI_Controller
     }
     public function index()
     {
-        $data['DaftarBagian'] = $this->templates->view('bagian')->result_array();
+        $data['DataStok'] = $this->barang->StokBarang()->result_array();
         $this->load->view('user/template/header', $data);
         $this->load->view('user/gudang/stock/index', $data);
         $this->load->view('user/template/footer', $data);
